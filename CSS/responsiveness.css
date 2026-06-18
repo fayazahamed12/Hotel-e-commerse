@@ -1,0 +1,126 @@
+/* ============Responsive================ */
+
+@media only screen and (max-width: 1000px) and (min-width: 600px) {
+    #fgt,#vod,#tsd{
+        display: none;
+    }
+}
+
+@media (max-width: 992px) {
+  .navbar-collapse {
+    position: fixed;
+    top: 56px;       
+    left: 0;
+    width: 100%;
+    background-color: rgba(0,0,0,0.95); 
+    padding: 20px 0;
+    z-index: 9999;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 20px;
+    padding: 15px 10px;
+  }
+}
+
+@media only screen and (max-width: 676px) {
+  .navbar .navbar-brand {
+    font-size: 24px;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 16px;
+    padding: 0.5rem 0;
+  }
+  #bcimg img {
+    width: 100%;
+    height: auto;
+    max-height: 60vh;
+  }
+  
+  /* Circle Animation */
+  .wrapper {
+    width: 100px;
+    z-index: 10;
+    position: absolute;
+    height: 100px;
+    top: 80px;
+    left: 10px;
+  }
+  .circle-content h3 {
+    font-size: 14px;
+  }
+  .circle-content p {
+    font-size: 12px;
+  }
+  #deals {
+    padding: 10px;
+  }
+  #deals h2 {
+    font-size: 18px;
+    text-shadow: 1px 1px 2px yellow;
+  }
+
+  .circle-text {
+    width: 100%;
+    height: 100%;
+  }
+  #fgt,
+  #tsd{
+    display: none;
+  }
+  #vod{
+    color: #fff;
+    filter: blur(0.7px);
+    right: 10px;
+    top: 10%;
+    font-size: 16px;
+    transform: translate(0%);
+  }
+
+  #imgbtn button {
+    padding: 10px 25px;
+    font-size: 14px;
+  }
+  #imgbtn{
+    position: absolute;
+    top: 25%;
+  }
+
+  .deal-overlay{
+    display: none;
+  }
+
+  #btimg{
+    display: block;
+    text-align: center;
+  }
+
+  #btimg img{
+    height: 250px;
+    width: 300px;
+  }
+
+  #bbtn button{
+    display: flex;
+    justify-content: center;
+    width: 300px;
+  }
+
+  /* Footer */
+
+  #rele .name{
+    font-size: 22px;
+  }
+
+  #topics {
+    flex-wrap: wrap; 
+    justify-content: center;
+  }
+
+  #topics > div {
+    flex: 0 0 45%;
+    margin: 10px;
+  }
+    
+}

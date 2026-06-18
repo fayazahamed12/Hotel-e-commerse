@@ -1,0 +1,1514 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <link rel="stylesheet" href="../CSS/cart.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script>
+      if (localStorage.getItem("isLoggedIn") !== "true") {
+        window.location.href = "./login.html";
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Navbar -->
+
+    <nav class="navbar bg-black">
+      <div class="container-fluid">
+        <a
+          class="navbar-brand name text-white fw-bold fs-1 ps-5"
+          href="./index.html"
+          >Heat & Eat</a
+        >
+        <form class="d-flex" role="search">
+          <input
+            class="form-control search me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button
+            id="cart-open"
+            class="btn btn-outline-danger text-white"
+            type="button"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>
+          </button>
+        </form>
+      </div>
+    </nav>
+
+    <div id="psearch" class="d-none justify-content-center mt-5">
+      <input
+        id="rsearch"
+        class="form-control w-50"
+        type="search"
+        placeholder="Search"
+      />
+    </div>
+
+    <!-- Cart Items -->
+
+    <div id="cart-box">
+      <div class="cart-content">
+        <div id="cancel-btn">
+          <p>Cart Items</p>
+          <i id="cancel" class="fa-regular fa-circle-xmark"></i>
+        </div>
+
+        <div id="cart-items">
+          <!-- <div class="round-img">
+      <img src="../Images/signin.jpg" alt="">
+    <div>
+      <h3>Biriyani</h3>
+    <div id="price-details">
+      <p class="item-price">129</p>
+      <p>249</p>
+    </div>
+    <div id="count-box">
+      <input type="number" value="1" min="1" class="cart-quantity">
+      <i class="fa-solid fa-trash"></i>
+    </div>
+    </div>
+    </div>
+    <hr style="border: 2px solid black;"> -->
+        </div>
+
+        <div id="total">
+          <button onclick="porder()">Place Order</button>
+          <div id="total1" style="display: flex">
+            <p id="pad">Total&nbsp;</p>
+            <p class="totalprice">Rs.0</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Side-content -->
+
+    <div id="center-body">
+      <div id="side-content">
+        <div id="signin-head">
+          <p><i class="fa-solid fa-users"></i> &nbsp; Hello, sign in</p>
+        </div>
+        <div class="animated-login">
+          <div class="avatar"><i class="fa-solid fa-circle-user"></i></div>
+          <h3 class="welcome-text">Welcome to Heat & Eat</h3>
+          <p class="sub-text">Login to taste the best 🔥</p>
+
+          <a href="./login.html"
+            ><button class="animated-btn">Log In</button></a
+          >
+          <a href="./signin.html" class="animated-link">Create New Account</a>
+          <hr style="margin: 15px 0" />
+          <div class="feature-card">
+            <i class="fa-solid fa-truck"></i>
+            <p>Fast Delivery</p>
+          </div>
+          <div class="feature-card">
+            <i class="fa-solid fa-fire"></i>
+            <p>Hot & Fresh Meals</p>
+          </div>
+          <div class="feature-card">
+            <i class="fa-solid fa-star"></i>
+            <p>Top Rated Dishes</p>
+          </div>
+        </div>
+        <div class="offer-box">
+          <p class="offer-text">🔥 Today's Special Offer</p>
+          <h4 class="offer-discount">Flat 50% OFF</h4>
+          <p class="offer-small">On your first order</p>
+        </div>
+        <div class="quote-box">
+          <p>“Good food is the foundation of genuine happiness.”</p>
+        </div>
+      </div>
+
+      <div id="food-items">
+        <div class="cards" data-item="idlysambar">
+          <img
+            class="food-image"
+            src="../Images/idlysam.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Idly Sambar</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">45</p>
+            </div>
+            <div class="cart-btn">
+              <button><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="podiidly">
+          <img
+            src="../Images/podiidly.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Podi Idly</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">59</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="Plaindosa">
+          <img
+            src="../Images/plaindosa.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Plain Dosa</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">30</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="masaldosa">
+          <img
+            src="../Images/masaldosa.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Masal Dosa</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">70</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="ravadosa">
+          <img
+            src="../Images/ravadosa.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Rava Dosa</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">79</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="vegsandwich">
+          <img
+            src="../Images/vegsandwich.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Veg Sandwich</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">70</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="alooparota">
+          <img
+            src="../Images/alooparota.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Aloo Parota</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">50</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="kothuparota">
+          <img
+            src="../Images/kothuparota.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Kothu Parota</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">90</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="keemaparota">
+          <img
+            src="../Images/keemaparota.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Keema Parota</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">110</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="eggomelette">
+          <img
+            src="../Images/eggomelete.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Egg Omelette</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">29</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="eggsandwich">
+          <img
+            src="../Images/eggsandwich.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Egg Sandwich</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">75</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="breadomelette">
+          <img
+            src="../Images/breadomelete.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Bread Omelete</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">40</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="drinkstea">
+          <img src="../Images/tea.jpeg" height="150px" width="220px" alt="" />
+          <h2 class="food-title">Tea</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">30</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="drinkscoffee">
+          <img
+            src="../Images/coffee.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Coffee</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">40</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="drinksmilk">
+          <img src="../Images/milk.jpeg" height="150px" width="220px" alt="" />
+          <h2 class="food-title">Milk</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">25</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="drinkslassi">
+          <img
+            src="../Images/sweetlassi.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Sweet Lassi</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">50</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="drinkslessi">
+          <img
+            src="../Images/saltedlassi.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Salted Lassi</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">40</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="drinkscoak">
+          <img
+            src="../Images/cocacola.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">CocaCola</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">40</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="drinkspepsi">
+          <img src="../Images/pepsi.jpeg" height="150px" width="220px" alt="" />
+          <h2 class="food-title">Pepsi</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">65</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="vegstarterspaneertikka">
+          <img
+            src="../Images/paneertikka.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Paneer Tikka</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">199</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="vegstartersharabharakabab">
+          <img
+            src="../Images/vegkabab.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Veg-Kabab</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">149</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="vegstartersvegspringroll">
+          <img
+            src="../Images/springroll.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Spring Roll</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">90</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="vegstarterscorncheeseballs">
+          <img
+            src="../Images/cheeseballs.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Cheese Balls</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">250</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="vegmaincoursepalakpanner">
+          <img
+            src="../Images/palakpanner.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Palak Panner</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">180</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="vegmaincoursemixvegcurry">
+          <img
+            src="../Images/mixvegcurry.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Mix Veg-Curry</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">170</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="vegmaincoursedaltadka">
+          <img
+            src="../Images/daltadka.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Dal Tadka</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">190</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="vegmaincoursealoogobi">
+          <img
+            src="../Images/aloogobi.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Aloo Gobi</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">150</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="nonvegmaincoursebutterchicken">
+          <img
+            src="../Images/butterchicken.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Butter Chicken</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">129</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="nonvegmaincoursechickencurry">
+          <img
+            src="../Images/chickencurry.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Chicken-Curry</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">139</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="nonvegmaincoursemuttonrogan">
+          <img
+            src="../Images/muttontogan.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Mutton-Rogan</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">179</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="nonvegmaincoursefishcurry">
+          <img
+            src="../Images/fishcurry.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Fish-Curry</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">120</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="nonvegmaincourseprawnmasala">
+          <img
+            src="../Images/prawnmsala.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Prawn Masala</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">210</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="vegbiryani">
+          <img
+            src="../Images/vegbiryani.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Veg-Biryani</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">120</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="chickenbiryani">
+          <img
+            src="../Images/cknbiriyani.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Ckn-Biryani</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">180</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="muttonbiryani">
+          <img
+            src="../Images/muttonbiryani.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Mtn-Biryani</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">220</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="dhonnabiryani">
+          <img
+            src="../Images/dhonnabiryani.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Dhona-Biryani</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">240</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="chickenpulao">
+          <img
+            src="../Images/cknpulao.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Chicken-Pulao</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">150</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="muttonpulao">
+          <img
+            src="../Images/mtnpulao.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Mutton-Pulao</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">190</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="bucketbiryani">
+          <img
+            src="../Images/bktbiryani.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Bucket-Biryani</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">199</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="naan">
+          <img
+            src="../Images/butternaan.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Butter-Naan</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">99</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="garlicnaan">
+          <img
+            src="../Images/garliknaan.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Garlic-Naan</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">79</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="chillipaneer">
+          <img
+            src="../Images/chillipanner.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Chilli-Panner</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">130</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="dinnerfriedrice">
+          <img
+            src="../Images/friedrice.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Fried-Rice</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">90</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="dinnernoodles">
+          <img
+            src="../Images/noodles.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Noodles</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">110</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="dinnerfishfry">
+          <img
+            src="../Images/fishfry.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Fish-Fry</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">60</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="dinnerprawncurry">
+          <img
+            src="../Images/prawncurry.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Prawn-Curry</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">180</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="dinnereggrice">
+          <img
+            src="../Images/eggrice.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Egg-Rice</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">70</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="dinnervegmanchurian">
+          <img
+            src="../Images/vegmanguriyan.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Veg-Manchurian</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">140</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="dinnerchickenchilli">
+          <img
+            src="../Images/chickenchilli.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Chicken Chilli</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">150</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="fastfoodcheeseburger">
+          <img
+            src="../Images/cheeseburger.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Cheese-Burger</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">150</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="fastfoodchickenburger">
+          <img
+            src="../Images/cknburger.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Chicken-Burger</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">130</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="fasfoodpaneerpizza">
+          <img
+            src="../Images/paneerpizza.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Paneer-Pizza</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">120</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="fastfoodfrenchfries">
+          <img src="../Images/fries.jpeg" height="150px" width="220px" alt="" />
+          <h2 class="food-title">French-Fries</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">79</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="fastfoodhotdog">
+          <img
+            src="../Images/hotdogs.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Hot Dog</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">59</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="fastfoodburrito">
+          <img
+            src="../Images/burito.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Burrito</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">127</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="fastfoodtaco">
+          <img src="../Images/taco.jpeg" height="150px" width="220px" alt="" />
+          <h2 class="food-title">Taco</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">130</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="desserticecream">
+          <img
+            src="../Images/icecream.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Ice-Creams</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">49</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="dessertcheesecake">
+          <img
+            src="../Images/cheesecake.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Cheesecake</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">180</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="dessertfruitsalad">
+          <img
+            src="../Images/fruitsalad.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Fruit Salad</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">120</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="dessertbrownie">
+          <img
+            src="../Images/brownie.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Brownie</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">70</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="dessertkunafa">
+          <img
+            src="../Images/kunafa.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Kunafa</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">120</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="dessertrasgulla">
+          <img
+            src="../Images/rasagulla.jpeg"
+            height="150px"
+            width="220px"
+            alt=""
+          />
+          <h2 class="food-title">Rasgulla</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">120</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" data-item="dissertgulabjamun">
+          <img src="../Images/gulab.jpeg" height="150px" width="220px" alt="" />
+          <h2 class="food-title">Gulab Jamun</h2>
+          <div class="cart-par">
+            <div class="cart-detail">
+              <p class="doller">₹</p>
+              <p class="price">80</p>
+            </div>
+            <div class="cart-btn">
+              <button onclick="">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About US -->
+
+    <section id="About-US">
+      <div>
+        <div id="foot">
+          <div id="rele">
+            <h1 class="name">HEAT & EAT</h1>
+          </div>
+
+          <div id="topics">
+            <div>
+              <h3>Order Now</h3>
+              <p>Deals</p>
+              <p>Pizza</p>
+              <p>Biriyani</p>
+              <p>Drinks</p>
+              <p>Dessert</p>
+            </div>
+
+            <div>
+              <h3>About</h3>
+              <p>About Us</p>
+              <p>Contactless Delivary</p>
+              <p>Nutrition</p>
+              <p>Diet</p>
+              <p>Career</p>
+            </div>
+
+            <div>
+              <h3>Our Policies</h3>
+              <p>Privacy</p>
+              <p>Terms&Conditions</p>
+              <p>Help</p>
+              <p>Report</p>
+              <p>Responsible</p>
+            </div>
+
+            <div>
+              <h3>Visit Heat&Eat</h3>
+              <p>Visit our Store</p>
+              <p>Global Blog</p>
+              <p>Delisious</p>
+              <p>Snacks</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="pcon">
+        <div id="lcon">
+          <h2>Follow Us</h2>
+        </div>
+        <div id="ltio">
+          <div id="lasticon">
+            <i class="fa-brands ss fa-twitter"></i>
+            <i class="fa-brands ss fa-instagram"></i>
+            <i class="fa-brands ss fa-facebook"></i>
+            <i class="fa-brands ss fa-whatsapp"></i>
+            <i class="fa-brands ss fa-linkedin-in"></i>
+          </div>
+        </div>
+      </div>
+
+      <div id="lastcontent">
+        <div id="lcontent">
+          <p>
+            Hungry? Don’t wait! Enjoy your favorite meals delivered fresh and
+            fast, right to your doorstep. Every bite is packed with flavor and
+            made with love. *T&C Apply.
+          </p>
+          <p>Hurry up and place your order now!</p>
+        </div>
+        <img src="../Images/download.jpg" alt="" />
+      </div>
+    </section>
+
+    <script src="../JS/script.js"></script>
+  </body>
+</html>

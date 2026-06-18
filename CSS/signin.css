@@ -1,0 +1,99 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background-color: rgb(243, 240, 231);
+}
+#sup #signup{
+    text-align: center;
+}
+input{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid gray;
+    padding: 10px;
+}
+.len{
+    width: 100%;
+}
+#sup{
+    padding: 30px;
+}
+input:focus{
+    border-bottom: 2px solid salmon;
+}
+#parent{
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    height: 100vh;        
+}
+
+#child{
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+    display: flex;
+    animation: popup 0.8s ease;
+}
+@keyframes popup {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+#sup>a{
+    text-decoration: none;
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+}
+img{
+    padding: 0%;
+    height: 100%;
+    width: 228px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+}
+button{
+    padding: 10px 0px;
+    width: 100%;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(to right,#0d84ed,#4facfe, #00f2fe);
+    color: white;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+button:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+#lo{
+    text-align: center;
+}
+
+#lo a{
+   text-decoration: none;
+    color: #0d84ed;
+    font-weight: bold; 
+}
+
+
+/* Media Query */
+
+@media only screen and (max-width: 676px){
+    #simg{
+        display: none;
+    }
+    #lname{
+        margin-top: 20px;
+    }
+}
+
