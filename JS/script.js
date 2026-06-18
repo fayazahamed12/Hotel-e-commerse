@@ -35,6 +35,11 @@ searchbox.addEventListener('keyup', (e) => {
 // Cart Open
 const cartBox = document.getElementById("cart-box");
 document.getElementById("cart-open").addEventListener("click", () => {
+  if (localStorage.getItem('isLoggedIn') !== 'true') {
+    alert("Please login to view your cart!");
+    window.location.href = './login.html';
+    return;
+  }
   cartBox.classList.add("active");
 });
 
@@ -73,6 +78,11 @@ const addcartbtn = document.querySelectorAll(".cart-btn button");
 addcartbtn.forEach((btn) => {
   btn.addEventListener("click", function (e) {
     e.preventDefault();
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+      alert("Please login to add items to your cart!");
+      window.location.href = './login.html';
+      return;
+    }
 
     const card = this.closest(".cards");
 
